@@ -4,8 +4,10 @@
 <title>PHP Functions</title>
 
 <?php
-$userdate = strtotime($_POST['userDate']);
-$string = $_POST['userInput'];
+  $userdate = strtotime($_POST['userDate']);
+  $string = $_POST['userInput'];
+  $num = $_POST['userNum'];
+
 function AmericanDate()
 {
   global $userdate;
@@ -46,8 +48,16 @@ function compare()
   }
 
 }
+function format(){
+  global $num;
+  echo number_format($num)."<br>";
+}
+function currency(){
+  global $num;
+  echo "$ ".number_format($num, 2);
+}
+  ?>
 
-?>
 </head>
   <body>
     <h1>PHP Functions</h1>
@@ -55,19 +65,19 @@ function compare()
     <form name ="form" action = "PHPFunctions.php" method ="post" >
       <input type = "text" name = "userDate" value = "mm/dd/yyyy"/><br/>
       <input type = "textarea" name="userInput" value="Hey, type stuff here!"/><br/>
-
+      <input type = "textarea" name="userNum" value="Put a number here"/><br/>
       <input type = "submit"/><br/>
-
-
 
     </form>
     <h2>
       American Date :<?php AmericanDate(); ?><br/>
       International Date :<?php InterDate(); ?><br/>
-      Character Count:<?php stringCount() ?><br/>
-      Trimmed: <?php trimStr() ?><br/>
-      LowerCase: <?php lowerCase() ?><br/>
-      Does it have "DMACC" in it? <?php compare() ?>
+      Character Count:<?php stringCount(); ?><br/>
+      Trimmed: <?php trimStr(); ?><br/>
+      LowerCase: <?php lowerCase(); ?><br/>
+      Does it have "DMACC" in it? <?php compare(); ?><br/>
+      Formatted number: <?php format(); ?>
+      Formatted Currency: <?php currency(); ?>
     </h2>
 
   </body>
