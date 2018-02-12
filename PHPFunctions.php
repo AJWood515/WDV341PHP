@@ -39,10 +39,10 @@ function compare()
   $compared = strcasecmp($string, "DMACC");
   if ($compared == 0)
   {
-    echo "The strings does have ""DMACC"" in it.";
+    echo "The strings does have 'DMACC' in it.";
   }
   else {
-    echo "The strings does not have ""DMACC"" in it.";
+    echo "The strings does not have 'DMACC' in it.";
   }
 
 }
