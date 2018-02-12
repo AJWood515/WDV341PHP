@@ -5,6 +5,7 @@
 
 <?php
 $userdate = strtotime($_POST['userDate']);
+$string = $_POST['userInput'];
 function AmericanDate()
 {
   global $userdate;
@@ -17,6 +18,35 @@ function InterDate()
   $interDate = date('d/m/y', $userdate);
   echo $interDate;
 }
+function stringCount()
+{
+    global $string;
+    echo strlen($string);
+}
+function trimStr()
+{
+  global $string;
+  echo trim($string);
+}
+function lowerCase()
+{
+  global $string;
+  echo strtolower($string);
+}
+function compare()
+{
+  global $string;
+  $compared = strcasecmp($string, "DMACC");
+  if ($compared == 0)
+  {
+    echo "The strings are equal.";
+  }
+  else {
+    echo "The strings are not equal.";
+  }
+
+}
+
 ?>
 </head>
   <body>
@@ -34,6 +64,10 @@ function InterDate()
     <h2>
       American Date :<?php AmericanDate(); ?><br/>
       International Date :<?php InterDate(); ?><br/>
+      Character Count:<?php stringCount() ?><br/>
+      Trimmed: <?php trimStr() ?><br/>
+      LowerCase: <?php lowerCase() ?><br/>
+      Does it have "DMACC" in it? <?php compare() ?>
     </h2>
 
   </body>
