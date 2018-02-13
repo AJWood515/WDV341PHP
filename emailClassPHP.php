@@ -41,7 +41,7 @@ class Emailer {
   {
     return $this->emailSubject;
   }
-  public getEmailMsg()
+  public function getEmailMsg()
   {
     return $this->emailMsg;
   }
