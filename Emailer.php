@@ -29,7 +29,7 @@ class Emailer {
   {
     $this->emailSubject = $inEmailSubject;
   }
-  public function getSentto()
+  public function getSendTo()
   {
     return $this->sendTo;
   }
