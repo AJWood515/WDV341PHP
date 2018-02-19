@@ -1,35 +1,28 @@
 <?php
 //Model-Controller Area.  The PHP processing code goes in this area.
-
-	//Method 1.  This uses a loop to read each set of name-value pairs stored in the $_POST array
-	$tableBody = "";		//use a variable to store the body of the table being built by the script
-
-	foreach($_POST as $key => $value)		//This will loop through each name-value in the $_POST array
+//Method 1.  This uses a loop to read each set of name-value pairs stored in the $_POST array
+$tableBody = "";		//use a variable to store the body of the table being built by the script
+foreach($_POST as $key => $value)		//This will loop through each name-value in the $_POST array
 	{
 		$tableBody .= "<tr>";				//formats beginning of the row
 		$tableBody .= "<td>$key</td>";		//dsiplay the name of the name-value pair from the form
 		$tableBody .= "<td>$value</td>";	//dispaly the value of the name-value pair from the form
 		$tableBody .= "</tr>";				//End this row
 	}
-
-
-	//Method 2.  This method pulls the individual name-value pairs from the $_POST using the name
-	//as the key in an associative array.
-
+//Method 2.  This method pulls the individual name-value pairs from the $_POST using the name
+//as the key in an associative array.
 	$inFirstName = $_POST["firstName"];		//Get the value entered in the first name field
 	$inLastName = $_POST["lastName"];		//Get the value entered in the last name field
 	$inSchool = $_POST["school"];			//Get the value entered in the school field
 	$inClass = $_POST["class"];
 	$inCheckbox = $_POST["checkbox"];
 	$inSelect = $_POST["selected"]
-
 ?>
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>WDV 341 Intro PHP - Code Example</title>
 </head>
-
 <body>
 <h1>WDV341 Intro PHP</h1>
 <h2>Form Handler Result Page - Code Example</h2>
@@ -52,6 +45,5 @@
 <p>Class: <?php echo $inClass; ?></p>
 <p>CheckBox: <?php echo $inCheckbox;?></p>
 <p>DropDown List: <?php echo $inSelect; ?></p>
-
 </body>
 </html>
