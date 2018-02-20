@@ -15,8 +15,9 @@ foreach($_POST as $key => $value)		//This will loop through each name-value in t
 	$inLastName = $_POST["lastName"];		//Get the value entered in the last name field
 	$inSchool = $_POST["school"];			//Get the value entered in the school field
 	$inClass = $_POST["class"];
-	$inCheckbox = $_POST["checkbox"];
-	$inSelect = $_POST["selected"]
+	$inCheckbox1 = $_POST["checkbox1"];
+	$inCheckbox2 = $_POST["checkbox2"];
+	$inSelect = $_POST["selected"];
 ?>
 <!DOCTYPE html>
 <head>
@@ -43,7 +44,7 @@ foreach($_POST as $key => $value)		//This will loop through each name-value in t
 <p>First Name: <?php echo $inFirstName; ?></p>
 <p>Last Name: <?php echo $inLastName; ?></p>
 <p>Class: <?php echo $inClass; ?></p>
-<p>CheckBox: <?php echo $inCheckbox;?></p>
+<p>CheckBox: <?php echo $inCheckbox1." ". $inCheckbox2;?></p>
 <p>DropDown List: <?php echo $inSelect; ?></p>
 </body>
 </html>
