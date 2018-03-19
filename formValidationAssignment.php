@@ -21,14 +21,20 @@ function validSocial(){
 		$socialErrMsg = "Social Security number can not be empty.";
 		$validForm = false;
 	}
+	//^(\d{3}-\d{2}-\d{4})|(\d{3}\d{2}\d{4})$" - SSN with hyphens and spaces
+	if (!preg_match("/^\d{9}$/" ,$socialSecurity)){
+		$socialErrMsg = "Not a valid social security number.";
+		$validForm = false;
+	}
 
 }
 function validRadio(){
 	global $response, $radioErrMsg, $validForm;
 	if ($response == "") {
-		$radioErrMsg = "Please select oneof the options.";
+		$radioErrMsg = "Please select one of the options.";
 		$validForm = false;
 	}
+
 
 }
 
@@ -39,13 +45,13 @@ if( isset($_POST['submit']) )
 	$response = $_POST['RadioGroup1'];
 	$validForm = true;
 
-	/*validName();
+	validName();
 	validRadio();
 	validSocial();
 
 	if($validForm){
 		$form = array ($name, $socialSecurity, $response);
-	}*/
+	}
 }
 
 ?>
@@ -81,12 +87,12 @@ if( isset($_POST['submit']) )
     <tr>
       <td width="117">Name:</td>
       <td width="246"><input type="text" name="inName" id="inName" size="40" value="<?php echo $name; ?>" /></td>
-      <td width="210" class="error"></td>
+      <td width="210" class="error"><?php echo "$nameErrMsg";?></td>
     </tr>
     <tr>
       <td>Social Security</td>
       <td><input type="text" name="inEmail" id="inEmail" size="40" value="<?php echo $socialSecurity; ?>" /></td>
-      <td class="error"></td>
+      <td class="error"><?php echo "$socialErrMsg"?></td>
     </tr>
     <tr>
       <td>Choose a Response</td>
@@ -104,7 +110,7 @@ if( isset($_POST['submit']) )
           US Mail</label>
         <br>
       </p></td>
-      <td class="error"></td>
+      <td class="error"><?php echo "$radioErrMsg"; ?></td>
     </tr>
   </table>
   <p>
