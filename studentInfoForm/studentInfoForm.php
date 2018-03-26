@@ -195,7 +195,7 @@ validateThreeWords
 -->
 
 <?php
-print_r($_POST);
+//print_r($_POST);
 
 $emailLogin = "";
 $firstName = "";
@@ -292,7 +292,7 @@ function validLinkedIn(){
     $validForm = false;
     $linkedInErrMsg = "Must not be empty.";
   }
-  elseif(!preg_match("/^((http|https):\/\/)?+(www.linkedin.com\/)+[a-z]+(\/)+[a-zA-Z0-9-]{5,30}+$/", $linkedIn)){
+  elseif(!preg_match("/http(s)?:\/\/([w]{3}\.)?linkedin\.com\/in\/([a-zA-Z0-9-]{5,30})\/?/", $linkedIn)){
     $validForm = false;
     $linkedInErrMsg = "Must be a valid LinkedIn profile.";
   }
@@ -333,12 +333,20 @@ function validGoals(){
     $goalsErrMsg = "Please add carrer goals.";
     $validForm = false;
   }
+  elseif (!preg_match("/^(a-z|A-Z|0-9)*[^#$%^&*()']*$/", $careerGoals)){
+    $goalsErrMsg = "No special characters.";
+    $validForm = false;
+  }
 }
 function validThreeWords(){
   global $threeWords, $wordsErrMsg, $validForm;
   echo "threeWords";
   if($threeWords == ""){
     $wordsErrMsg = "Please describe yourself in three words";
+    $validForm = false;
+  }
+  elseif (!preg_match("/^(a-z|A-Z|0-9)*[^#$%^&*()']*$/", $threeWords)){
+    $wordsErrMsg = "No special characters.";
     $validForm = false;
   }
 }
