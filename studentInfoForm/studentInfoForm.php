@@ -197,6 +197,7 @@ validateThreeWords
 <?php
 //print_r($_POST);
 
+
 $emailLogin = "";
 $firstName = "";
 $lastName = "";
@@ -225,6 +226,7 @@ $wordsErrMsg = "";
 $validFormMsg = "";
 $validForm = false;
 
+
 function validEmailLogin(){
   global $emailLogin, $emailErrMsg, $validForm;
   $emailErrMsg = "";
@@ -236,7 +238,6 @@ function validEmailLogin(){
 }
 function validName(){
   global $firstName, $lastName, $firstNameErrMsg, $lastNameErrMsg, $validForm;
- echo "-here". $firstName."-";
   $firstNameErrMsg = "";
 
 	if($firstName == "")
@@ -280,11 +281,11 @@ function validEmail(){
 		$validForm = false;
   		$emailErrMsg = "Invalid email format";
   	}
-  elseif (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$emailLogin))		//Copied straight from W3Schools.  Uses a Regular Expression
+  /*elseif (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$emailLogin))		//Copied straight from W3Schools.  Uses a Regular Expression
     {
     $validForm = false;
       $emailLoginErrMsg = "Invalid email format";
-    }
+    }*/
 }
 function validLinkedIn(){
   global $linkedIn, $linkedInErrMsg, $validForm;
@@ -306,18 +307,18 @@ function validWebsite(){
     $validForm = false;
 
   }
-  elseif (!preg_match("/@^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$@i/", $website)){
+  elseif (!preg_match("/^((http:\/\/www\.)|(www\.)|(http:\/\/))[a-zA-Z0-9._-]+\.[a-zA-Z.]{2,5}$/", $website)){
         $websiteErrMsg = "Invalid Website.";
         $vaildForm = false;
   }
-  if ($websiteTwo == ""){
+/*  if ($websiteTwo == ""){
     $websiteTwoErrMsg = "Website must not be blank";
     $validForm = false;
   }
   elseif (!preg_match("/@^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$@i/", $websiteTwo)){
         $websiteTwoErrMsg = "Invalid Website.";
         $vaildForm = false;
-  }
+  }*/
 }
 function validHometown(){
   global $hometown, $hometownErrMsg, $validForm;
@@ -328,7 +329,6 @@ function validHometown(){
 }
 function validGoals(){
   global $careerGoals, $goalsErrMsg, $validForm;
-  echo "goals";
   if($careerGoals == ""){
     $goalsErrMsg = "Please add carrer goals.";
     $validForm = false;
@@ -340,7 +340,6 @@ function validGoals(){
 }
 function validThreeWords(){
   global $threeWords, $wordsErrMsg, $validForm;
-  echo "threeWords";
   if($threeWords == ""){
     $wordsErrMsg = "Please describe yourself in three words";
     $validForm = false;
@@ -368,7 +367,6 @@ if( isset($_POST['submitBio']) )
   $threeWords = $_POST["threeWords"];
   $validForm = true;
 
-validEmail();
 validName();
 validProgram();
 validWebsite();
@@ -376,10 +374,6 @@ validHometown();
 validGoals();
 validThreeWords();
 validLinkedIn();
-
-}
-
-else {
 
 }
 
@@ -402,8 +396,21 @@ else {
 <section class="bamboo">
 <section class="violet">
 
-	<div class="main form">
+<?php
 
+if($validForm){
+
+?>
+
+    <h3>Thanks</h3>
+    <p> Got it!</p>
+  </div>
+<?php
+}
+else{
+  ?>
+
+<div class="main form">
 	<h2></h2>
 	</table>
 	<form id="portfolioBioForm" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
@@ -473,7 +480,8 @@ else {
 	</form>
 
 	</div>
-
+<?php }
+?>
 
 </section>
 </section>
