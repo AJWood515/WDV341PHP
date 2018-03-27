@@ -276,6 +276,10 @@ function validProgram(){
 function validEmail(){
   global $email, $emailErrMsg, $emailLogin, $emailLoginErrMsg, $validForm;
   $emailErrMsg = "";
+  if($email = ""){
+    $emailErrMsg =" Email can't be blank.";
+    $validForm = false;
+  }
   if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email))
   	{
 		$validForm = false;
@@ -428,11 +432,11 @@ else{
 		<tr>
 		<td >Program:<br> <select id="program" name="program" value = "<?php echo $program; ?>">
 				<option value="default">---Select Your Program---</option>
-				<option value="animation" >Animation</option>
-				<option value="graphicDesign" >Graphic Design</option>
-				<option value="photography" >Photography</option>
-				<option value="videoProduction" >Video Production</option>
-				<option value="webDevelopment" >Web Development</option>
+				<option value="animation">Animation</option>
+				<option value="graphicDesign">Graphic Design</option>
+				<option value="photography">Photography</option>
+				<option value="videoProduction">Video Production</option>
+				<option value="webDevelopment">Web Development</option>
 			</select><br><span class="error" id="programError"><?php echo "$programErrMsg"; ?></span><td>
 		</tr>
 		<tr>
