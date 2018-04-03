@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>DMACC Portfolio Day Bio Form</title>
@@ -10,13 +9,11 @@
 
   <link href="css/normalize.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
-
   <!-- css3-mediaqueries.js for IE less than 9 -->
 
 <script src="css3-mediaqueries.js"></script>
 <script src="jquery-3.2.1.js"></script>
 <script>
-
 	$(document).ready(function(){
 		if( $("select[name=program]	option:selected").val() == "webDevelopment")
 		{
@@ -26,7 +23,6 @@
 		{
 			$(".secondWeb").css("display", "none");
 		}
-
 		$("select#program").change(function(){
 			if( $("select#program option:checked").val() == "webDevelopment")
 			{
@@ -50,11 +46,9 @@
 			$("#threeWords").val("");
 		}
 	});
-
-
 	</script>
-
   <style>
+
 	img{
 		display: block;
 		margin: 0 auto;
@@ -71,7 +65,6 @@
 		background-image: url("bodacious.png");
 		margin: 1.5em;
 	}
-
 	.main {
 		padding: 1em;
 		background-color: white;
@@ -85,7 +78,6 @@
 	.robotic{
 		display: none;
 	}
-
 	.form {
 		background-color:white;
 		padding-left: 5em;
@@ -97,7 +89,7 @@
 		margin: auto;
 		background-image: url("raspberry.jpg");
 		padding: 1.3em;
-		width: 70%;
+	  width: 70%;
 	}
 	.bamboo{
 		background-image: url("bamboo.jpg");
@@ -107,7 +99,7 @@
 		background-image: url("ultra violet.png");
 		padding: .5em;
 	}
-	.secondWeb{
+  .secondWeb{
 		display: none;
 	}
 	table{
@@ -121,14 +113,13 @@
 		color: #d42a58;
 		font-weight: bold;
 	}
-
 @media only screen and (max-width:620px) {
   /* For mobile phones: */
   img {
     width:100%;
   }
   .form {
-	width:100%;
+  width:100%;
 	padding-left: .1em;
 	padding-top: .1em;
   }
@@ -151,15 +142,12 @@
 		padding-bottom: .5em;
 	}
 }
-
   </style>
 
 <!-- Input Field validations.
-
 validateFirstName
 	// valid first name should only include letters, numbers, and spaces
 	// ... must be present
-
 
 validateLastName
 	// valid last name should only include letters, numbers and spaces
@@ -191,12 +179,10 @@ validateCareerGoals
 
 validateThreeWords
 	//valid three-words should include only numbers, letters, spaces, and basic punctuation
-
 -->
 
 <?php
 //print_r($_POST);
-
 
 $emailLogin = "";
 $firstName = "";
@@ -226,7 +212,6 @@ $wordsErrMsg = "";
 $validFormMsg = "";
 $validForm = false;
 
-
 function validEmailLogin(){
   global $emailLogin, $emailErrMsg, $validForm;
   $emailErrMsg = "";
@@ -239,7 +224,6 @@ function validEmailLogin(){
 function validName(){
   global $firstName, $lastName, $firstNameErrMsg, $lastNameErrMsg, $validForm;
   $firstNameErrMsg = "";
-
 	if($firstName == "")
 	{
 		$validForm = false;
@@ -260,7 +244,6 @@ function validName(){
     $validForm = false;
     $lastNameErrMsg="No special chaacters.";
   }
-
 }
 function validProgram(){
   global $program, $programTwo, $programErrMsg, $programTwoErrMsg, $validForm;
@@ -304,12 +287,9 @@ function validLinkedIn(){
 }
 function validWebsite(){
   global $website, $websiteTwo, $websiteErrMsg, $websiteTwoErrMsg, $validForm;
-
   if ($website == ""){
-
     $websiteErrMsg = "Website must not be blank";
     $validForm = false;
-
   }
   elseif (!preg_match("/^((http:\/\/www\.)|(www\.)|(http:\/\/))[a-zA-Z0-9._-]+\.[a-zA-Z.]{2,5}$/", $website)){
         $websiteErrMsg = "Invalid Website.";
@@ -353,8 +333,6 @@ function validThreeWords(){
     $validForm = false;
   }
 }
-
-
 if( isset($_POST['submitBio']) )
 {
   $emailLogin = $_POST["emailToLogin"];
@@ -378,34 +356,25 @@ validHometown();
 validGoals();
 validThreeWords();
 validLinkedIn();
-
 }
-
 ?>
-
 </head>
 
 <section class="orange">
 <body>
 <div class="frame2">
 <div class="frame">
-
   <div class="main">
   <div><img src="madonna.gif" alt="Mix gif" ></div>
   <br>
-
 <!--<a href = 'dmaccPortfolioDayLogout.php'>Log Out</a>-->
-
 <section class="citrus">
 <section class="bamboo">
 <section class="violet">
 
 <?php
-
 if($validForm){
-
 ?>
-
     <h3>Thanks</h3>
     <p> Got it!</p>
   </div>
@@ -413,12 +382,10 @@ if($validForm){
 }
 else{
   ?>
-
 <div class="main form">
 	<h2></h2>
 	</table>
 	<form id="portfolioBioForm" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
-
 		<table>
 		<tr>
 		<td>Login Email:<br> <input type="text" id="emailToLogin" name="emailToLogin" value = "<?php echo $emailLogin; ?>"/></td>
@@ -432,21 +399,21 @@ else{
 		<tr>
 		<td >Program:<br> <select id="program" name="program" value = "<?php echo $program; ?>">
 				<option value="default">---Select Your Program---</option>
-				<option value="animation">Animation</option>
-				<option value="graphicDesign">Graphic Design</option>
-				<option value="photography">Photography</option>
-				<option value="videoProduction">Video Production</option>
-				<option value="webDevelopment">Web Development</option>
+				<option value="animation" <?php if($program == "animation") {echo 'selected = "selected"';}?>>Animation</option>
+				<option value="graphicDesign" <?php if($program == "graphicDesign") {echo 'selected = "selected"';}?>>Graphic Design</option>
+				<option value="photography" <?php if($program == "photography") {echo 'selected = "selected"';}?>>Photography</option>
+				<option value="videoProduction" <?php if($program == "videoProduction") {echo 'selected = "selected"';}?>>Video Production</option>
+				<option value="webDevelopment" <?php if($program == "webDevelopment") {echo 'selected = "selected"';}?>>Web Development</option>
 			</select><br><span class="error" id="programError"><?php echo "$programErrMsg"; ?></span><td>
 		</tr>
 		<tr>
 		<td >Secondary Program:<br> <select id="program2" name="program2" value = "<?php echo $programTwo; ?>">
 				<option value="none" >---No Secondary Program---</option>
-				<option value="animation" >Animation</option>
-				<option value="graphicDesign" >Graphic Design</option>
-				<option value="photography" >Photography</option>
-				<option value="videoProduction" >Video Production</option>
-				<option value="webDevelopment" >Web Development</option>
+				<option value="animation" <?php if($program == "animation") {echo 'selected = "selected"';}?>>Animation</option>
+				<option value="graphicDesign" <?php if($program == "graphicDesign") {echo 'selected = "selected"';}?>>Graphic Design</option>
+				<option value="photography" <?php if($program == "photography") {echo 'selected = "selected"';}?>>Photography</option>
+				<option value="videoProduction" <?php if($program == "videoProduction") {echo 'selected = "selected"';}?>>Video Production</option>
+				<option value="webDevelopment" <?php if($program == "webDevelopment") {echo 'selected = "selected"';}?>>Web Development</option>
 			</select><br><span class="error" id="program2Error"><?php echo "$programTwoErrMsg"; ?></span><td>
 		</tr>
 		<tr>
@@ -482,7 +449,6 @@ else{
 		</tr>
 		</table>
 	</form>
-
 	</div>
 <?php }
 ?>
@@ -490,9 +456,7 @@ else{
 </section>
 </section>
 </section>
-
 </div>
-
 </body>
 </section>
 
