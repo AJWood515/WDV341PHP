@@ -67,7 +67,7 @@ function currency(){
       <input type = "textarea" name="userInput" value="Hey, type stuff here!"/><br/>
       <input type = "textarea" name="userNum" value="Put a number here"/><br/>
       <input type = "submit"/><br/>
-      
+
 
     </form>
     <h2>
